@@ -16,3 +16,13 @@ def store_embeddings(texts: list[str], embeddings: list[list[float]]):
             embeddings=[emb],
             ids=[f"doc_{i}"]
         )
+
+def query_similar(query_embedding: list[float], top_k: int = 3) -> list[dict]:
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=top_k
+    )
+    return [
+        {"document": doc, "id": _id}
+        for doc, _id in zip(results['documents'][0], results['ids'][0])
+    ]

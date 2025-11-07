@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-chromadb
-transformers
-sentence-transformers
-python-multipart
